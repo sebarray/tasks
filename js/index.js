@@ -10,7 +10,7 @@ let  content = document.getElementById('Content').value
     if (nom != "" && content != "") {
         fetch(url, {
                 method: "POST",
-
+                headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
                     "Name": document.getElementById('Name').value,
                     "Content": document.getElementById('Content').value
