@@ -17,6 +17,7 @@ anotar.addEventListener('click', () => {
             })
             .then(resp => resp.json())
             .then(data => {
+               
                crear(data)
             })
     }
@@ -38,13 +39,14 @@ function getTask(url) {
     fetch(url)
         .then(response => response.json())
         .then(data => {
-
+                if(data.length!=1){
             data.forEach((d) => {
                 crear(d)
 
             })
+            crear(d)
 
-        })
+        }})
 }
 
 
