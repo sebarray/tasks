@@ -18,7 +18,6 @@ let  content = document.getElementById('Content').value
             })
             .then(resp => resp.json())
             .then(data => {
-               console.log(data)
                crear(data)
             })
     }
