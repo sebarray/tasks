@@ -1,15 +1,16 @@
 url = "https://tasksgo.herokuapp.com/tasks"
 let anotar = document.getElementById("anotar")
-let nom = document.getElementById('Name').value
-let content = document.getElementById('Content').value
+
+
+
 
 anotar.addEventListener('click', () => {
+    let nom = document.getElementById('Name').value
+let  content = document.getElementById('Content').value
     if (nom != "" && content != "") {
         fetch(url, {
                 method: "POST",
-                headers: {
-                    'Content-Type': 'application/json'
-                },
+
                 body: JSON.stringify({
                     "Name": document.getElementById('Name').value,
                     "Content": document.getElementById('Content').value
@@ -17,7 +18,7 @@ anotar.addEventListener('click', () => {
             })
             .then(resp => resp.json())
             .then(data => {
-               
+               console.log(data)
                crear(data)
             })
     }
@@ -39,14 +40,10 @@ function getTask(url) {
     fetch(url)
         .then(response => response.json())
         .then(data => {
-                if(data.length!=1){
             data.forEach((d) => {
                 crear(d)
-
             })
-            crear(d)
-
-        }})
+        })
 }
 
 
@@ -59,6 +56,6 @@ function crear(d) {
                <p class="fs-3 text-white p-3">${d.Content}</p>
            </div>
     `
-    document.getElementById('tareas').appendChild(ctask);
+    document.getElementById('tareas').append(ctask);
 
 }
